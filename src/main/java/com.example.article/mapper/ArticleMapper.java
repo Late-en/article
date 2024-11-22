@@ -24,8 +24,10 @@ public interface ArticleMapper extends BaseMapper<Article> {
             "   <if test='example.state != null'>" +
             "       AND state = #{example.state}" +
             "   </if>" +
+            "   <if test='example.createUser != null'>" +
+            "       AND create_user = #{example.createUser}" +
+            "   </if>" +
             "</where>" +
-            "	LIMIT #{page}, #{limit}" +
             "</script>")
-    List<Article> searchArticle(@Param("example") Article example, @Param("page") Integer page, @Param("limit") Integer limit);
+    List<Article> searchArticle(@Param("example") Article example);
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -51,11 +53,15 @@ public class Article implements Serializable {
 	/**
 	 * 文章分类ID
 	 */
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "category_id")
 	private Long categoryId;
 
 	/**
 	 * 创建人ID
 	 */
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "create_user")
 	private Long createUser;
 
 	/**

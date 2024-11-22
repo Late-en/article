@@ -50,11 +50,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public PageResult<Article> searchArticle(Article example, Integer page, Integer limit) {
-        PageResult<Article> res = new PageResult<>();
-        Integer start = (page - 1) * limit;
-        res.setRecords(articleMapper.searchArticle(example, start, limit));
-        res.setTotal(articleMapper.searchArticle(example, 0, Integer.MAX_VALUE).size());
-        return res;
+    public List<Article> searchArticle(Article example) {
+        return articleMapper.searchArticle(example);
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
  * @author Late-en
  */
 public interface UserService {
-    User findUser(User User);
+    User getUserInfo(String username);
 
     boolean addUser(User user);
 
@@ -24,6 +24,4 @@ public interface UserService {
     boolean verityPasswd(String username, String password);
 
     List<User> allUsers();
-
-    User getUserInfo(String username);
 }

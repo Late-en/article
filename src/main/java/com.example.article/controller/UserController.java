@@ -64,16 +64,6 @@ public class UserController {
 	}
 
 	/**
-	 * 查找用户
-	 */
-	@GetMapping("find/{username}")
-	public ApiResponse find(@PathVariable("username") String username){
-		User User = new User();
-		User.setUsername(username);
-		return ApiResponse.ofSuccess("信息返回成功", userService.findUser(User));
-	}
-
-	/**
 	 * 更新用户信息数据
 	 */
 	@PostMapping("/update")

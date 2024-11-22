@@ -1,6 +1,5 @@
 package com.example.article.service;
 
-import com.example.article.constant.PageResult;
 import com.example.article.entity.Article;
 
 import java.io.Serializable;
@@ -20,5 +19,5 @@ public interface ArticleService {
 
     List<Article> AllArticle();
 
-    PageResult<Article> searchArticle(Article example, Integer pageNum, Integer pageSize);
+    List<Article> searchArticle(Article example);
 }

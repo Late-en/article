@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author Late-en
  */
@@ -46,8 +48,8 @@ public class ArticleController {
 	@PostMapping(value = "/search")
 	public ApiResponse Search(@RequestBody Article example,@RequestParam Integer page, @RequestParam Integer limit){
 		log.debug(String.valueOf(example));
-		PageResult<Article> result = articleService.searchArticle(example,page,limit);
-		if (result != null && result.getTotal()>0){
+		List<Article> result = articleService.searchArticle(example);
+		if (result != null){
 			return ApiResponse.ofSuccess("ok",result);
 		}
 		return ApiResponse.ofError("error");
