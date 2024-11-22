@@ -1,11 +1,14 @@
 package com.example.article.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Date;
+
+import static com.baomidou.mybatisplus.annotation.FieldFill.*;
 
 /**
  * @Description  
@@ -58,11 +61,13 @@ public class Article implements Serializable {
 	/**
 	 * 创建时间
 	 */
+	@TableField(fill = INSERT)
 	private Date createTime;
 
 	/**
 	 * 修改时间
 	 */
+	@TableField(fill = INSERT_UPDATE)
 	private Date updateTime;
 
 }
