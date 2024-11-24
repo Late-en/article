@@ -3,11 +3,14 @@ package com.example.article.controller;
 import com.example.article.entity.User;
 import com.example.article.model.ApiResponse;
 import com.example.article.service.UserService;
+import com.example.article.utils.JWTUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Late-en
@@ -42,9 +45,20 @@ public class UserController {
 	@PostMapping("/login")
 	public ApiResponse login(@RequestBody User user){
 		if(userService.verityPasswd(user.getUsername(),user.getPassword())){
-			return ApiResponse.ofSuccess("登陆成功", userService.getUserInfo(user.getUsername()));
+			try {
+				User userDB = userService.getUserInfo(user.getUsername());
+				Map<String, String> payload = new HashMap<>();
+				payload.put("id",userDB.getId().toString());
+				payload.put("name",userDB.getUsername());
+				// 生成jwt令牌
+				String token = JWTUtils.getToken(payload);
+				return ApiResponse.builder().code(200).data(userDB).
+						success(true).type("success").token(token).build();
+			} catch (Exception e) {
+				return ApiResponse.builder().code(404).success(false).type("false").build();
+			}
 		}
-		return ApiResponse.ofWarning("用户名或密码错误");
+		return ApiResponse.ofError("error");
 	}
 
 	/**

@@ -3,6 +3,7 @@ package com.example.article.model;
 import com.example.article.constant.Status;
 import com.example.article.model.exception.BaseException;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ApiResponse {
     //状态码
     private Integer code;
@@ -23,12 +25,14 @@ public class ApiResponse {
     private String type;
     //返回数据
     private Object data;
+    //token
+    private String token;
 
     /**
      * 构造一个自定义的API返回
      */
     public static ApiResponse of(Integer code, String message, boolean success, String type, Object data){
-        return new ApiResponse(code, message, success, type, data);
+        return new ApiResponse(code, message, success, type, data, null);
     }
 
     /**

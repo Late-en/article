@@ -1,6 +1,7 @@
 package com.example.article.service;
 
 import com.example.article.entity.Article;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,4 +21,6 @@ public interface ArticleService {
     List<Article> AllArticle();
 
     List<Article> searchArticle(Article example);
+
+    boolean uploadCoverImg(MultipartFile pic, Long articleId);
 }

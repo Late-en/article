@@ -1,6 +1,5 @@
 package com.example.article.controller;
 
-import com.example.article.constant.PageResult;
 import com.example.article.entity.Article;
 import com.example.article.model.ApiResponse;
 import com.example.article.service.ArticleService;

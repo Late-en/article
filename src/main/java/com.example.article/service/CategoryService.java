@@ -1,7 +1,6 @@
 package com.example.article.service;
 
 import com.example.article.entity.Category;
-import com.example.article.entity.User;
 
 import java.io.Serializable;
 import java.util.List;
