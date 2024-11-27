@@ -55,14 +55,14 @@ public class Article implements Serializable {
 	 */
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "category_id")
-	private Long categoryId;
+	private Category category;
 
 	/**
 	 * 创建人ID
 	 */
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "create_user")
-	private Long createUser;
+	private User createUser;
 
 	/**
 	 * 创建时间

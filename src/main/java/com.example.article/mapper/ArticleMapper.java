@@ -18,7 +18,7 @@ public interface ArticleMapper extends BaseMapper<Article> {
             "SELECT * " +
             "  FROM article" +
             "<where>" +
-            "   <if test='example.categoryId != null and example.categoryId != \"\" '>" +
+            "   <if test='example.category != null and example.category != \"\" '>" +
             "       AND category_id = #{example.categoryId}" +
             "   </if>" +
             "   <if test='example.state != null'>" +

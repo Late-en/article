@@ -38,7 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category getCategoryInfo(String Categoryname) {
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
-        wrapper.eq("Categoryname", Categoryname);
+        wrapper.eq("category_name", Categoryname);
         return CategoryMapper.selectOne(wrapper);
     }
 
