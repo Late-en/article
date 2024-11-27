@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
-	private static String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "img";
+	private static String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "img" + System.getProperty("file.separator");
 	@Autowired
 	private UserMapper UserMapper;
 

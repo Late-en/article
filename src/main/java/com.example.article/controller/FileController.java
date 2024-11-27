@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 @RestController
 @RequestMapping(value="/data/img")
 public class FileController {
-    private static String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "data";
+    private static String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "img" + System.getProperty("file.separator");
     @Autowired
     private ArticleService articleService;
     @Autowired
@@ -23,7 +23,7 @@ public class FileController {
     @GetMapping(value = "/userPic/{pic}",produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] userPic(@PathVariable String pic) throws Exception {
-        File file = new File( path + System.getProperty("file.separator") + pic);
+        File file = new File( path + "userPic" + System.getProperty("file.separator") + pic);
         FileInputStream inputStream = new FileInputStream(file);
         byte[] bytes = new byte[inputStream.available()];
         inputStream.read(bytes, 0, inputStream.available());
@@ -33,7 +33,7 @@ public class FileController {
     @GetMapping(value = "/coverImg/{pic}",produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] coverImg(@PathVariable String pic) throws Exception {
-        File file = new File(path + System.getProperty("file.separator") + pic);
+        File file = new File(path + "coverImg" + System.getProperty("file.separator") + pic);
         FileInputStream inputStream = new FileInputStream(file);
         byte[] bytes = new byte[inputStream.available()];
         inputStream.read(bytes, 0, inputStream.available());

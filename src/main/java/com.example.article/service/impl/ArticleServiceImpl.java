@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class ArticleServiceImpl implements ArticleService {
-    private static String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "img";
+    private static String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "img" + System.getProperty("file.separator");
     @Autowired
     private ArticleMapper articleMapper;
 

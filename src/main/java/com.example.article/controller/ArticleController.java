@@ -45,7 +45,7 @@ public class ArticleController {
 	 * 查找
 	 */
 	@PostMapping(value = "/search")
-	public ApiResponse Search(@RequestBody Article example,@RequestParam Integer page, @RequestParam Integer limit){
+	public ApiResponse Search(@RequestBody Article example){
 		log.debug(String.valueOf(example));
 		List<Article> result = articleService.searchArticle(example);
 		if (result != null){
