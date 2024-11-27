@@ -28,8 +28,6 @@ public class User implements Serializable {
 	/**
 	 * ID
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	/**

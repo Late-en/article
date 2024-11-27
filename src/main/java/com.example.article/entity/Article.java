@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -28,8 +27,6 @@ public class Article implements Serializable {
 	/**
 	 * ID
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	/**
@@ -55,15 +52,17 @@ public class Article implements Serializable {
 	/**
 	 * 文章分类ID
 	 */
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "category_id")
+	private Long categoryId;
+
+	@TableField(exist = false)
 	private Category category;
 
 	/**
 	 * 创建人ID
 	 */
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "create_user")
+	private Long createUserId;
+
+	@TableField(exist = false)
 	private User createUser;
 
 	/**

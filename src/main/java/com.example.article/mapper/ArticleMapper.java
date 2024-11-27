@@ -15,8 +15,10 @@ import java.util.List;
 @Repository
 public interface ArticleMapper extends BaseMapper<Article> {
     @Select("<script>" +
-            "SELECT * " +
-            "  FROM article" +
+            "SELECT a.*, u.*, c.* " +
+            "  FROM article a " +
+            "  LEFT JOIN user u ON a.create_user = u.id " +
+            "  LEFT JOIN category c ON a.category_id = c.id " +
             "<where>" +
             "   <if test='example.category != null and example.category != \"\" '>" +
             "       AND category_id = #{example.category.categoryId}" +
