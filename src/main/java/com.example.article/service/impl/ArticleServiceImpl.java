@@ -2,7 +2,11 @@ package com.example.article.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.article.entity.Article;
+import com.example.article.entity.Category;
+import com.example.article.entity.User;
 import com.example.article.mapper.ArticleMapper;
+import com.example.article.mapper.CategoryMapper;
+import com.example.article.mapper.UserMapper;
 import com.example.article.service.ArticleService;
 import com.example.article.utils.fileUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +27,10 @@ public class ArticleServiceImpl implements ArticleService {
     private static String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "img" + System.getProperty("file.separator");
     @Autowired
     private ArticleMapper articleMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private CategoryMapper categoryMapper;
 
     @Override
     public boolean addArticle(Article Article) {
@@ -54,7 +62,12 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> searchArticle(Article example) {
-        return articleMapper.searchArticle(example);
+        List<Article> articleList = articleMapper.searchArticle(example);
+        for (Article article : articleList) {
+            article.setCreateUser(userMapper.selectById(article.getCreateUserId()));
+            article.setCategory(categoryMapper.selectById(article.getCategoryId()));
+        }
+        return articleList;
     }
 
     @Override
