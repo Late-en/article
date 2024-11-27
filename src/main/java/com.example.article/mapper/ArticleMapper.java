@@ -19,13 +19,13 @@ public interface ArticleMapper extends BaseMapper<Article> {
             "  FROM article" +
             "<where>" +
             "   <if test='example.category != null and example.category != \"\" '>" +
-            "       AND category_id = #{example.categoryId}" +
+            "       AND category_id = #{example.category.categoryId}" +
             "   </if>" +
             "   <if test='example.state != null'>" +
             "       AND state = #{example.state}" +
             "   </if>" +
             "   <if test='example.createUser != null'>" +
-            "       AND create_user = #{example.createUser}" +
+            "       AND create_user = #{example.createUser.id}" +
             "   </if>" +
             "</where>" +
             "</script>")

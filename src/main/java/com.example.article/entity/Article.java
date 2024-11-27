@@ -28,6 +28,8 @@ public class Article implements Serializable {
 	/**
 	 * ID
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	/**
@@ -53,14 +55,14 @@ public class Article implements Serializable {
 	/**
 	 * 文章分类ID
 	 */
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "category_id")
 	private Category category;
 
 	/**
 	 * 创建人ID
 	 */
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "create_user")
 	private User createUser;
 
